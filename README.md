@@ -1,29 +1,20 @@
-📈 Predictive Modeling for Policyholder Behavior
 
-This project aims to analyze and model insurance claim likelihood based on the behavioral and demographic attributes of policyholders using machine learning techniques. The project is built by a second-year actuarial science student as part of a public modeling portfolio.
+# Insurance Claim Anticipation — concise summary
 
-🔍 Problem Statement
+Predict whether a policyholder will file an insurance claim using tabular data (demographics, health indicators and activity).
 
-The goal of this project is to predict whether a policyholder is likely to file an insurance claim based on their behavioral and demographic features. Key features include:
+**Dataset (columns)**: `age`, `sex`, `bmi`, `steps`, `children`, `smoker`, `region`, `charges`, `insuranceclaim` (target: 1=claimed, 0=not claimed).
 
-- Age
-- Smoking status
-- BMI (Body Mass Index)
-- Region
+**Pipeline (high level)**
+- **EDA:** distribution checks, pairplots and correlation analysis.
+- **Preprocessing:** drop duplicates, outlier removal (IQR), categorical encoding (one-hot / dummy), standardization of numeric features.
+- **Class imbalance handling:** SMOTE to balance classes after cleanup.
+- **Feature selection:** VIF, RFE and PCA experiments to assess multicollinearity and dimensionality.
+- **Modeling:** trained and compared several classifiers (Logistic Regression, Decision Tree, Random Forest, Naïve Bayes, SVM, KNN, Gradient Boosting, XGBoost) with randomized search hyperparameter tuning where applicable.
 
-By understanding the likelihood of claims, insurers can improve pricing strategies, risk management practices, and customer engagement.
+**Key results & notes**
+- Small dataset (~1.3k rows) and slightly imbalanced — SMOTE used to balance classes.
+- Ensemble and boosting methods performed best (Extreme Gradient Boosting showed the top performance). For this task, F1-score was prioritized over raw accuracy.
+- Simpler models (e.g., Logistic Regression) are still recommended when interpretability and generalizability matter.
 
-🧪 Key Features
-
-- Raw Data Preprocessing and Cleaning: We process and clean the raw dataset, ensuring it's ready for model training.
-
-- One-hot Encoding: Categorical variables like region and sex are encoded using one-hot encoding to prepare them for machine learning models.
-
-- Binary Encoding: The smoker status is binary encoded (1 for smoker, 0 for non-smoker) to work with the model effectively.
-
-- Standardization of Numerical Features: Features like age, BMI, and charges are standardized to ensure the model trains effectively and avoids skewed predictions.
-
-- Model Training: We use Random Forest and Decision Trees for training the model and predicting claim likelihood.
-
-- Model Evaluation: The performance of the model is evaluated using a confusion matrix to understand the true positives, true negatives, false positives, and false negatives.
 
